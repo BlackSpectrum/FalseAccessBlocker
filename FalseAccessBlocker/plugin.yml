@@ -1,0 +1,3 @@
+name: FalseAccessBlocker
+main: falseaccessblocker.FalseAccessBlocker
+version: 1.0
