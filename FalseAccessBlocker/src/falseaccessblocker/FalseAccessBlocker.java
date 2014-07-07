@@ -36,8 +36,8 @@ public class FalseAccessBlocker extends JavaPlugin implements Listener
 		}
 	}
 	
-	@EventHandler(priority=EventPriority.HIGH)
-	public void onPlayerInteractBlock(PlayerInteractEvent event)
+	@EventHandler(priority=EventPriority.MONITOR)
+	public void onPlayerInteractBlockMonitor(PlayerInteractEvent event)
 	{
 		Player player = event.getPlayer();
 		if (event.getAction().equals(Action.RIGHT_CLICK_BLOCK)) 
@@ -58,7 +58,10 @@ public class FalseAccessBlocker extends JavaPlugin implements Listener
 					lastCancelledEvent = (Location)meta.value();
 		    }
 			
-			if( lastCancelledEvent.getDirection().distance(player.getLocation().getDirection()) < 5f && lastCancelledEvent.distance(player.getLocation()) < 0.5)
+			
+			if( getAbsDelta(lastCancelledEvent.getPitch(), player.getLocation().getPitch())  < 3f && 
+					getAbsDelta(lastCancelledEvent.getYaw(), player.getLocation().getYaw()) <3f &&
+					lastCancelledEvent.distance(player.getLocation()) < 0.5)
 			{
 				event.setCancelled(true);
 			}
@@ -66,5 +69,10 @@ public class FalseAccessBlocker extends JavaPlugin implements Listener
 			player.removeMetadata("lastCancelledEvent", this);
 	    
 		}
+	}
+	
+	private float getAbsDelta(float f1, float f2)
+	{
+		return Math.abs(f1 - f2);
 	}
 }
