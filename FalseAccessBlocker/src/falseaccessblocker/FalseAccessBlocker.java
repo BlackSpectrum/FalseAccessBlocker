@@ -59,8 +59,8 @@ public class FalseAccessBlocker extends JavaPlugin implements Listener
 		    }
 			
 			
-			if( getAbsDelta(lastCancelledEvent.getPitch(), player.getLocation().getPitch())  < 3f && 
-					getAbsDelta(lastCancelledEvent.getYaw(), player.getLocation().getYaw()) <3f &&
+			if( getAbsDelta(lastCancelledEvent.getPitch(), player.getLocation().getPitch())  < 5f && 
+					getAbsDelta(lastCancelledEvent.getYaw(), player.getLocation().getYaw()) < 5f &&
 					lastCancelledEvent.distance(player.getLocation()) < 0.5)
 			{
 				event.setCancelled(true);
