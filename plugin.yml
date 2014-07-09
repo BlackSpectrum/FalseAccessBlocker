@@ -1,0 +1,3 @@
+name: BSPFalseAccessBlocker
+main: falseaccessblocker.FalseAccessBlocker
+version: 1.0
