@@ -1,4 +1,4 @@
-package it.github.mats391.falseaccessblocker;
+package io.github.mats391.falseaccessblocker;
 
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
